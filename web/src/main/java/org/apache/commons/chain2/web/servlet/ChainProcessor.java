@@ -113,7 +113,7 @@ public class ChainProcessor extends ChainServlet {
      * <p>The name of the {@link Command} to be executed for each incoming
      * request.</p>
      */
-    private String commandName = null;
+    private String command = null;
 
     // --------------------------------------------------------- Servlet Methods
 
@@ -125,7 +125,7 @@ public class ChainProcessor extends ChainServlet {
         super.destroy();
         attribute = null;
         catalogName = null;
-        commandName = null;
+        command = null;
     }
 
     /**
@@ -138,8 +138,8 @@ public class ChainProcessor extends ChainServlet {
         super.init();
         attribute = getServletConfig().getInitParameter(CONFIG_ATTR);
         catalogName = getServletConfig().getInitParameter(CATALOG);
-        commandName = getServletConfig().getInitParameter(COMMAND);
-        if (commandName == null) {
+        command = getServletConfig().getInitParameter(COMMAND);
+        if (command == null) {
             command = COMMAND_DEFAULT;
         }
     }
