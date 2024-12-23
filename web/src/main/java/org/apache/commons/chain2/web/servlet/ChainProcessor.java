@@ -140,7 +140,7 @@ public class ChainProcessor extends ChainServlet {
         catalogName = getServletConfig().getInitParameter(CATALOG);
         commandName = getServletConfig().getInitParameter(COMMAND);
         if (commandName == null) {
-            commandName = COMMAND_DEFAULT;
+            command = COMMAND_DEFAULT;
         }
     }
 
