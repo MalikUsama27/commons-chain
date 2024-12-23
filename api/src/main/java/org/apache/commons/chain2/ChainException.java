@@ -39,7 +39,7 @@ public class ChainException extends RuntimeException {
     /**
      * Command that failed when exception occurred.
      */
-    private final Command<?, ?, ?> failedCommand;
+    private transient Command<?, ?, ?> failedCommand;
 
     /**
      * Create an exception object with a message.
