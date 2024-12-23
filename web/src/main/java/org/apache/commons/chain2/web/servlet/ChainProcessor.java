@@ -107,13 +107,13 @@ public class ChainProcessor extends ChainServlet {
      * {@link CatalogFactoryBase} for this application, or <code>null</code>
      * to select the default {@link Catalog}.</p>
      */
-    private String catalog = null;
+    private String catalogName = null; 
 
     /**
      * <p>The name of the {@link Command} to be executed for each incoming
      * request.</p>
      */
-    private String command = null;
+    private String commandName = null;
 
     // --------------------------------------------------------- Servlet Methods
 
@@ -124,8 +124,8 @@ public class ChainProcessor extends ChainServlet {
     public void destroy() {
         super.destroy();
         attribute = null;
-        catalog = null;
-        command = null;
+        catalogName = null;
+        commandName = null;
     }
 
     /**
@@ -137,10 +137,10 @@ public class ChainProcessor extends ChainServlet {
     public void init() throws ServletException {
         super.init();
         attribute = getServletConfig().getInitParameter(CONFIG_ATTR);
-        catalog = getServletConfig().getInitParameter(CATALOG);
-        command = getServletConfig().getInitParameter(COMMAND);
-        if (command == null) {
-            command = COMMAND_DEFAULT;
+        catalogName = getServletConfig().getInitParameter(CATALOG);
+        commandName = getServletConfig().getInitParameter(COMMAND);
+        if (commandName == null) {
+            commandName = COMMAND_DEFAULT;
         }
     }
 
@@ -183,9 +183,9 @@ public class ChainProcessor extends ChainServlet {
                         "Catalog]";
                 throw new IllegalArgumentException(msg);
             }
-        } else if (catalog != null) {
+        } else if (catalogName != null) {
             theCatalog = CatalogFactoryBase.<String, Object, ServletWebContext<String, Object>>getInstance()
-                    .getCatalog(catalog);
+                    .getCatalog(catalogName);
         } else {
             theCatalog = CatalogFactoryBase.<String, Object, ServletWebContext<String, Object>>getInstance()
                     .getCatalog();
