@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 /**
  * <p>Convenience base class for {@link Context} implementations.</p>
@@ -274,7 +275,7 @@ public class ContextBase extends ContextMap<String, Object> {
      * @return The set of keys for objects in this Context.
      */
     @Override
-    public Set<String> keySet() {
+    public KeySetView<String, Object> keySet() {
         return super.keySet();
     }
 
